@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Train Scheduler</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.min.js"></script>
+	
+</head>
+<body>
+	<div class="jumbotron">
+		<div class="display-4 text-center">Train Scheduler</div>
+		<div class="lead text-center">The local time is <span id="current-time"></span></div>
+	</div>
+	<div class="card">
+		<div class="card-header">Current Train Schedule</div>
+		<div class="card-body">
+			<table class="table">
+				  <thead>
+				    <tr>
+				      <th scope="col">Train Name</th>
+				      <th scope="col">Destination</th>
+				      <th scope="col">Frequency (min)</th>
+				      <th scope="col">Next Arrival</th>
+				      <th scope="col">Minutes Away</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+
+				  </tbody>
+			</table>
+		</div>
+
+	</div>
+	<br>
+	<div class="card">
+		<div class="card-header">Add Train</div>
+		<div class="card-body">
+			<form>
+			  <div class="form-group">
+			    <label>Train Name</label>
+			    <input type="text" class="form-control" id="name-input">
+			  </div>
+			  <div class="form-group">
+			    <label>Destination</label>
+			    <input type="text" class="form-control" id="destination-input">
+			  </div>
+			  <div class="form-group">
+			    <label>First Train Time (HH:mm - military time)</label>
+			    <input type="text" class="form-control" id="firsttrain-input">
+			  </div>
+			  <div class="form-group">
+			    <label>Frequency (min)</label>
+			    <input type="text" class="form-control" id="frequency-input">
+			  </div>
+			  <button type="submit" class="btn btn-primary" id="submitButton">Submit</button>
+			</form>
+		</div>
+	</div>
+	<script type="text/javascript" src="assets/logic.js"></script>
+</body>
+</html>
