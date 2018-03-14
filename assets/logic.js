@@ -19,8 +19,6 @@ $("#submitButton").on("click", function() {
 	var firstTrain = moment($("#firsttrain-input").val().trim(), "HH:mm").format("HH:mm");
 	var frequency = $("#frequency-input").val().trim();
 
-	console.log(firstTrain);
-
 	$("#name-input").val("");
 	$("#destination-input").val("");
 	$("#firsttrain-input").val("");
@@ -36,23 +34,25 @@ $("#submitButton").on("click", function() {
 })
 
 database.ref().orderByChild("start date").on("child_added", function(snapshot) {
-	var newRow = $("<tr>");
-	$("tbody").append(newRow);
-		
-	console.log(snapshot.val());
-
 	var uniqueID = snapshot.key;
-	console.log(uniqueID);
 
-	var nameTD = $("<td scope='row'>");
-	nameTD.html("<button id=" + uniqueID + " class='remove btn'>X</button> " + snapshot.val().name);
+	var newRow = $("<tr class=" + uniqueID + ">");
+	$("tbody").append(newRow);
+	
+	var buttonTD = $("<td scope='row' class='" + uniqueID + " buttonTD'>");
+	buttonTD.html("<button id=" + uniqueID + " class='remove btn-sm text-center'>X</button>");
+	newRow.append(buttonTD)
+
+
+	var nameTD = $("<td class=" + uniqueID + ">");
+	nameTD.text(snapshot.val().name);
 	newRow.append(nameTD);
 
-	var destinationTD = $("<td>");
+	var destinationTD = $("<td class=" + uniqueID + ">");
 	destinationTD.text(snapshot.val().destination);
 	newRow.append(destinationTD);
 
-	var frequencyTD = $("<td>");
+	var frequencyTD = $("<td class=" + uniqueID + ">");
 	frequencyTD.text(snapshot.val().frequency);
 	newRow.append(frequencyTD);
 
@@ -66,11 +66,11 @@ database.ref().orderByChild("start date").on("child_added", function(snapshot) {
 
 		var nextTrain = moment().add(minutesTillTrain, "minutes");
 
-	var nextArrival = $("<td>");
+	var nextArrival = $("<td class=" + uniqueID + ">");
 	nextArrival.text(moment(nextTrain).format("hh:mm A"));
 	newRow.append(nextArrival);
 
-	var minutesAway = $("<td>");
+	var minutesAway = $("<td class=" + uniqueID + ">");
 	minutesAway.text(minutesTillTrain);
 	newRow.append(minutesAway);
 });
@@ -83,4 +83,9 @@ $(document).on("click", ".remove", function() {
 	var IDRef = database.ref("/" + ID + "");
 	IDRef.remove();
 })
+
+database.ref().on("child_removed", function(snapshot) {
+	var uniqueID = snapshot.key;
+	$("." + uniqueID + "").remove();
+});
 

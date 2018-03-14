@@ -6,9 +6,9 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.min.js"></script>
-	
+	<link rel="stylesheet" type="text/css" href="assets/style.css">
 </head>
-<body>
+<body class="container">
 	<div class="jumbotron">
 		<div class="display-4 text-center">Train Scheduler</div>
 		<div class="lead text-center">The local time is <span id="current-time"></span></div>
@@ -19,6 +19,7 @@
 			<table class="table">
 				  <thead>
 				    <tr>
+				      <th scope="col">(Click to Remove)</th>
 				      <th scope="col">Train Name</th>
 				      <th scope="col">Destination</th>
 				      <th scope="col">Frequency (min)</th>
@@ -58,6 +59,7 @@
 			</form>
 		</div>
 	</div>
+	<br>
 	<script type="text/javascript" src="assets/logic.js"></script>
 </body>
 </html>
