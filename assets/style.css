@@ -1,4 +1,25 @@
 
-.card {
-	
+.card-header {
+	font-weight: bold;
 }
+
+th {
+	font-style: italic;
+}
+
+.jumbotron {
+	background-image: url(images/bullet_train.jpg);
+	background-size: cover;
+	background-position: center center;
+}
+
+.display-4, .lead {
+	color: white;
+	font-weight: bold;
+	text-shadow: 2px 2px 2px black;
+}
+
+.card-header, .card-body, .display-4, .lead, .btn {
+	font-family: 'PT Sans Caption', sans-serif;
+}
+
